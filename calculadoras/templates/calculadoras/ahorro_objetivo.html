@@ -1,0 +1,21 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+    <h1>Ahorro Objetivo</h1>
+    <form method="post">
+        {% csrf_token %}
+        <p>Meta de ahorro ($): <input type="number" name="meta" step="0.01" required></p>
+        <p>Plazo (meses): <input type="number" name="meses" required></p>
+        <p>Tasa de interés mensual (%) — opcional: <input type="number" name="tasa" step="0.01" value="0"></p>
+        <input type="submit" value="Calcular">
+    </form>
+
+    {% if resultado %}
+        <div class="post">
+            <h2>Resultado</h2>
+            <p>Meta: ${{ resultado.meta }}</p>
+            <p>Plazo: {{ resultado.meses }} meses</p>
+            <p>Ahorro mensual necesario: ${{ resultado.ahorro_mensual }}</p>
+        </div>
+    {% endif %}
+{% endblock %}

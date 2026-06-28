@@ -1,0 +1,22 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+    <h1>Cuota de Préstamo</h1>
+    <form method="post">
+        {% csrf_token %}
+        <p>Monto del préstamo ($): <input type="number" name="monto" step="0.01" required></p>
+        <p>Tasa de interés mensual (%): <input type="number" name="tasa" step="0.01" required></p>
+        <p>Cantidad de meses: <input type="number" name="meses" required></p>
+        <input type="submit" value="Calcular">
+    </form>
+
+    {% if resultado %}
+        <div class="post">
+            <h2>Resultado</h2>
+            <p>Monto solicitado: ${{ resultado.monto }}</p>
+            <p>Cuota mensual: ${{ resultado.cuota }}</p>
+            <p>Total a pagar: ${{ resultado.total_pagado }}</p>
+            <p>Intereses totales: ${{ resultado.intereses_totales }}</p>
+        </div>
+    {% endif %}
+{% endblock %}

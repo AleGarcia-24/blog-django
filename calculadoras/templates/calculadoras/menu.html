@@ -1,0 +1,21 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+    <h1>Calculadoras Financieras</h1>
+    <div class="post">
+        <h2><a href="{% url 'interes_compuesto' %}">📈 Interés Compuesto</a></h2>
+        <p>Calculá cuánto crece tu inversión con el tiempo.</p>
+    </div>
+    <div class="post">
+        <h2><a href="{% url 'cuota_prestamo' %}">🏦 Cuota de Préstamo</a></h2>
+        <p>Calculá la cuota mensual fija de un préstamo.</p>
+    </div>
+    <div class="post">
+        <h2><a href="{% url 'conversor_moneda' %}">💱 Conversor de Moneda</a></h2>
+        <p>Convertí montos entre monedas con una tasa de cambio.</p>
+    </div>
+    <div class="post">
+        <h2><a href="{% url 'ahorro_objetivo' %}">🎯 Ahorro Objetivo</a></h2>
+        <p>Calculá cuánto ahorrar por mes para llegar a tu meta.</p>
+    </div>
+{% endblock %}

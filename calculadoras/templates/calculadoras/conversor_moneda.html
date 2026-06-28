@@ -1,0 +1,20 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+    <h1>Conversor de Moneda</h1>
+    <form method="post">
+        {% csrf_token %}
+        <p>Monto a convertir: <input type="number" name="monto" step="0.01" required></p>
+        <p>Tasa de cambio (ej: 1 USD = 1000 ARS → poner 1000): <input type="number" name="tasa_cambio" step="0.01" required></p>
+        <input type="submit" value="Convertir">
+    </form>
+
+    {% if resultado %}
+        <div class="post">
+            <h2>Resultado</h2>
+            <p>Monto original: {{ resultado.monto }}</p>
+            <p>Tasa de cambio aplicada: {{ resultado.tasa_cambio }}</p>
+            <p>Monto convertido: {{ resultado.monto_convertido }}</p>
+        </div>
+    {% endif %}
+{% endblock %}

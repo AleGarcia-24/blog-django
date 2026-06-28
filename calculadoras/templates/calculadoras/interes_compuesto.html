@@ -1,0 +1,21 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+    <h1>Interés Compuesto</h1>
+    <form method="post">
+        {% csrf_token %}
+        <p>Capital inicial ($): <input type="number" name="capital" step="0.01" required></p>
+        <p>Tasa de interés anual (%): <input type="number" name="tasa" step="0.01" required></p>
+        <p>Cantidad de períodos (años): <input type="number" name="periodos" required></p>
+        <input type="submit" value="Calcular">
+    </form>
+
+    {% if resultado %}
+        <div class="post">
+            <h2>Resultado</h2>
+            <p>Capital inicial: ${{ resultado.capital }}</p>
+            <p>Monto final: ${{ resultado.monto_final }}</p>
+            <p>Ganancia obtenida: ${{ resultado.ganancia }}</p>
+        </div>
+    {% endif %}
+{% endblock %}
